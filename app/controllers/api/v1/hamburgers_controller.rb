@@ -44,6 +44,7 @@ module Api
       # PUT /hamburguesa/:id_hamburguesa/ingrediente/:id_ingrediente
       # Agrega el ingrediente
       def add_ingredient
+        path = "https://tarea-2-taller-integracion.herokuapp.com/api/v1/"
         # Buscamos si la hamburguesa existe. Si es así, entonces pasamos a buscar el ingrediente.
         # Si no, rechazamos la operación
         @hamburger = Hamburger.find(params[:id_hamburguesa])
@@ -59,7 +60,7 @@ module Api
             if @relation
               render json: { message: 'La hamburguesa ya tiene el ingrediente'}, status: 200
             else
-              @hamburger["ingredientes"].push({"path" => params[:id_ingrediente].to_i})
+              @hamburger["ingredientes"].push({"path" => path + "ingrediente/" + params[:id_ingrediente].to_s})
               @hamburger.save
               HamburgersIngredient.create({hamburger_id: @hamburger["id"], ingredient_id: @ingredient["id"]})
               render json: { message: 'Ingrediente agregado'}, status: 201
