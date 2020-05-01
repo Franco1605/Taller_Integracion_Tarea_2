@@ -6,7 +6,7 @@ class CreateHamburgers < ActiveRecord::Migration[6.0]
       t.integer :precio
       t.text :descripcion
       t.text :imagen
-      t.hstore :ingredientes, array: true, default: [], null: false
+      t.hstore :ingredientes, :array => true, default: [], null: false
 
       t.timestamps
     end
