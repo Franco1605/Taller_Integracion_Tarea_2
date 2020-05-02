@@ -132,10 +132,10 @@ module Api
 
       private
       def hamburger_params
-        params.permit(:hamburger, :nombre, :descripcion, :precio, :imagen,:ingredientes => [])
+        params.require(:hamburger).permit(:nombre, :descripcion, :precio, :imagen,:ingredientes => [])
       end
       def hamburger_params_put
-        params.permit(:hamburguesaId, :ingredienteId)
+        params..require(:hamburger).permit(:hamburguesaId, :ingredienteId)
       end
     end
   end

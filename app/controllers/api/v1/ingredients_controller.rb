@@ -58,7 +58,7 @@ module Api
 
       private
       def ingredient_params
-        params.permit(:nombre, :descripcion)
+        params.require(:ingredient).permit(:nombre, :descripcion)
       end
     end
   end
