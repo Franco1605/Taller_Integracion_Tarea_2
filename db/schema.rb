@@ -22,15 +22,11 @@ ActiveRecord::Schema.define(version: 2020_04_27_014816) do
     t.text "descripcion"
     t.text "imagen"
     t.hstore "ingredientes", default: [], null: false, array: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "hamburgers_ingredients", id: false, force: :cascade do |t|
     t.bigint "hamburger_id"
     t.bigint "ingredient_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["hamburger_id"], name: "index_hamburgers_ingredients_on_hamburger_id"
     t.index ["ingredient_id"], name: "index_hamburgers_ingredients_on_ingredient_id"
   end
@@ -38,8 +34,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_014816) do
   create_table "ingredients", force: :cascade do |t|
     t.text "nombre"
     t.text "descripcion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "hamburgers_ingredients", "hamburgers"

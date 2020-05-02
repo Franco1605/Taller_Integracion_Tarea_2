@@ -3,8 +3,6 @@ class CreateIngredients < ActiveRecord::Migration[6.0]
     create_table :ingredients do |t|
       t.text :nombre
       t.text :descripcion
-
-      t.timestamps
     end
   end
 end
