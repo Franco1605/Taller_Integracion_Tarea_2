@@ -28,7 +28,7 @@ module Api
           if ingredient_params["nombre"]!= "" && ingredient_params["descripcion"]!= ""
             @ingredient = Ingredient.new(ingredient_params)
             if @ingredient.save
-              render json: @ingredient, :except => [:created_at, :updated_at], status: 201
+              render json: @ingredient, :except => [:created_at, :updated_at], status: 201 and return
             else
               render json: { error: 'No se pudo crear el ingrediente'}, status: 400
             end
