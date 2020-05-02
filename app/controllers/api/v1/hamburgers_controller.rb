@@ -1,6 +1,9 @@
 module Api
   module V1
     class HamburgersController < ApplicationController
+      def is_numeric(o)
+        true if Integer(o) rescue false
+      end
       
       # GET /hamburguesa
       def index
@@ -10,7 +13,7 @@ module Api
 
       # GET /hamburguesa/:id
       def show
-        if params[:id].is_a? Integer
+        if is_numeric(params[:id])
           @hamburger = Hamburger.find(params[:id].to_i)
           if @hamburger
             render json: @hamburger, :except => [:created_at, :updated_at], status: 200

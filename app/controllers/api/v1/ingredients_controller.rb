@@ -1,6 +1,10 @@
 module Api
   module V1
     class IngredientsController < ApplicationController
+
+      def is_numeric(o)
+        true if Integer(o) rescue false
+      end
       
       # GET /ingrediente
       def index
@@ -10,7 +14,7 @@ module Api
 
       # GET /ingrediente/:id
       def show
-        if params[:id].is_a? Integer
+        if is_numeric(params[:id])
           @ingredient = Ingredient.find(params[:id].to_i)
           if @ingredient
             render json: @ingredient, :except => [:created_at, :updated_at], status: 200
